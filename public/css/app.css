@@ -537,22 +537,14 @@ hr {
 }
 
 .container {
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-family: Raleway, sans-serif;
+  margin: 0 auto;
+  height: 500px;
+  width: 500px;
 }
 
-.container div:first-child {
-  font-size: 5em;
-  font-weight: bold;
-}
-
-.container div:last-child {
-  font-size: 3em;
-  font-weight: normal;
+.container div {
+  text-align: justify;
+  font-size: 100px;
 }
 
 /*# sourceMappingURL=app.css.map */

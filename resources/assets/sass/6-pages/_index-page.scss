@@ -1,11 +1,17 @@
 .container {
-  @include transform(translate(-50%, -50%));
-  @include position(absolute, 50% null null 50%);
-  font-family: Raleway, sans-serif;
-
-
+  // @include transform(translate(-50%, -50%));
+  // @include position(absolute, 50% null null 50%);
+  // font-family: Raleway, sans-serif;
+  // @include display(flex);
+  // background: rgba(tomato, 5);
+  margin: 0 auto;
+  @include size(500px);
   div {
-    &:first-child { font-size: 5em; font-weight: bold;}
-    &:last-child { font-size: 3em; font-weight: normal;}
+    // background: pink;
+    // @include size(60px);
+    // margin-right: 5px;
+    text-align: justify;
+
+    font-size: 100px
   }
 }
