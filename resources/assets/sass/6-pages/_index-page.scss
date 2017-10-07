@@ -8,10 +8,15 @@
   @include size(500px);
   div {
     // background: pink;
-    // @include size(60px);
+    @include size(60px);
     // margin-right: 5px;
     text-align: justify;
 
     font-size: 100px
   }
+}
+
+
+.box {
+  @include size(100px 200px);
 }
