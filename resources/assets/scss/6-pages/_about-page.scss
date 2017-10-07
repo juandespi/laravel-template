@@ -1,0 +1,10 @@
+.about-page{
+  background: pink;
+  @include size(500px);
+  display: block;
+  margin: 0 auto;
+
+  @include ie-fix() {
+    background: red;
+  }
+}
