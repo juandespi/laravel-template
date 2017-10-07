@@ -1,0 +1,11 @@
+.container {
+  @include transform(translate(-50%, -50%));
+  @include position(absolute, 50% null null 50%);
+  font-family: Raleway, sans-serif;
+
+
+  div {
+    &:first-child { font-size: 5em; font-weight: bold;}
+    &:last-child { font-size: 3em; font-weight: normal;}
+  }
+}
