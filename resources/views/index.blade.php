@@ -17,10 +17,24 @@
 
     </head>
     <body>
-      <div class="container">
-        <h2>♥</h2>
-      </div>
+      <header class="header--container">
+        <nav class="navlinks navlinks__left">
+          <a href=""><span>About Us</span></a>
+          <a href=""><span>Getting Started</span></a>
 
 
+          <a href=""></a>
+          <span></span>
+        </nav>
+      <div class="header--logo"></div>
+      <nav class="navlinks navlinks__right">
+        <a href=""><span>WOD</span></a>
+        <a href=""><span>Schedule</span></a>
+        <a href=""><span>Coaches</span></a>
+        <a href=""><span>Contact us</span></a>
+      </nav>
+      </header>
+
+      <div class="box"></div>
     </body>
 </html>
