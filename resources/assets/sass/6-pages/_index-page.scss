@@ -9,7 +9,6 @@
   div {
     @include size(60px);
     text-align: justify;
-
     font-size: 100px
   }
 }
@@ -17,4 +16,11 @@
 
 .box {
   @include size(100px 200px);
+}
+
+
+span {
+  @include moz-fix() {
+    background: blue;
+  }
 }
