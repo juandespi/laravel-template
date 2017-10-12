@@ -7,9 +7,7 @@
   margin: 0 auto;
   @include size(500px);
   div {
-    // background: pink;
     @include size(60px);
-    // margin-right: 5px;
     text-align: justify;
 
     font-size: 100px
