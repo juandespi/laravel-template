@@ -10,11 +10,17 @@
 }
 
 .box {
-	@include size(200px 300px);
+	@include size(50% 60%);
 	border: solid 1px black;
 	margin: 0 auto;
-	overflow: auto;
-	@include scrolling-shadows();
+
+	// @include scrolling-shadows();
+	// background: tomato;
+	// @include centerer(xy);
+	&--inner {
+		background: tomato;
+		@include responsive-ratio(16, 9);
+	}
 }
 
 span {

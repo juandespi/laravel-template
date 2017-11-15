@@ -1,3 +1,8 @@
+// -----------------------------------------------------------------------------
+//  @author :: John Anthony Despi
+//  @email  :: chattalogy@gmail.com
+// -----------------------------------------------------------------------------
+
 ////////////////////////////////////////////////////////////////////////////////
 //  autofill fix
 //  -- fixes browser bug that puts color on an input field
@@ -66,6 +71,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //  line-height
+//  -- mixin for lineheight with fall back for older browsers
 ////////////////////////////////////////////////////////////////////////////////
 @mixin line-height($height: 12) {
 	line-height: $height + px; //fallback for old browsers
@@ -73,48 +79,34 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//  circle radius
+//  Centerer
+//  -- center an element inside a container that has a position of relative
 ////////////////////////////////////////////////////////////////////////////////
-@mixin circle {
-	@include border-radius(50%);
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//  centerer
-////////////////////////////////////////////////////////////////////////////////
-@mixin centerer {
-	@include position(absolute, 50% null null 50%);
-	@include transform(translate(-50%, -50%));
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//  centerer 2
-////////////////////////////////////////////////////////////////////////////////
-@mixin centerer2($horizontal: true, $vertical: true) {
-	position: absolute;
-	@if ($horizontal and $vertical) {
-		top: 50%;
-		left: 50%;
+@mixin centerer($property) {
+	@if $property == x {
+		@include position(absolute, null null null 50%);
+		@include transform(translateX(-50%));
+	}
+	@if $property == y {
+		@include position(absolute, 50% null null null);
+		@include transform(translateY(-50%));
+	}
+	@if $property == xy {
+		@include position(absolute, 50% null null 50%);
 		@include transform(translate(-50%, -50%));
-	} @else if ($horizontal) {
-		left: 50%;
-		@include transform(translate(-50%, 0));
-	} @else if ($vertical) {
-		top: 50%;
-		@include transform(translate(0, -50%));
 	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//  coverer
+//  Cover
 ////////////////////////////////////////////////////////////////////////////////
-@mixin coverer {
+@mixin cover {
 	@include position(absolute, 0 null null 0);
 	@include size(100%);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//  absolute block
+//  Absolute block
 ////////////////////////////////////////////////////////////////////////////////
 @mixin absolute-block {
 	@include position(absolute, 0 0 0 0);
@@ -122,7 +114,8 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//  no bullet
+//  No bullet
+//  -- mixin for bullet removal [can only be applied in <ul></ul>]
 ////////////////////////////////////////////////////////////////////////////////
 @mixin no-bullet {
 	list-style-image: none;
@@ -138,7 +131,7 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//  custom-bullets
+//  Custom-bullets
 ////////////////////////////////////////////////////////////////////////////////
 @mixin custom-bullets($bullet-icon, $width: image-width($bullet-icon), $height: image-height($bullet-icon), $line-height: 18px, $padding: 14px) {
 	margin-left: 0;
@@ -150,8 +143,9 @@
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// IE style fix
-// //////////////////////////////////////////////////////////////////////////////
+//  IE style fix
+//  -- IE specific bug fixes
+////////////////////////////////////////////////////////////////////////////////
 @mixin ie-fix() {
 	@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
 		@content;
@@ -160,6 +154,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Mozilla style fix
+// -- Mozilla specific bug fixes
 // /////////////////////////////////////////////////////////////////////////////
 @mixin moz-fix() {
 	@-moz-document url-prefix() {
@@ -169,20 +164,42 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Scrolling shadows
-// /////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 @mixin scrolling-shadows($background-color: rgb(255, 255, 255), $shadow-intensity: 0.2, $shadow-color: rgb(0,0,0), $cover-size: 40px, $shadow-size: 14px) {
 	background: linear-gradient($background-color 30%, rgba($background-color, 0)),
-  		        linear-gradient(rgba($background-color, 0), $background-color 70%) 0 100%,
-		          radial-gradient(50% 0, farthest-side, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0) ),
-		          radial-gradient(50% 100%, farthest-side, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
+	            linear-gradient(rgba($background-color, 0), $background-color 70%) 0 100%,
+	            radial-gradient(50% 0, farthest-side, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0) ),
+	            radial-gradient(50% 100%, farthest-side, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
 
 	background: linear-gradient($background-color 30%, rgba($background-color, 0)),
-		          linear-gradient(rgba($background-color, 0), $background-color 70%) 0 100%,
-		          radial-gradient(farthest-side at 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
-		          radial-gradient(farthest-side at 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
+	            linear-gradient(rgba($background-color, 0), $background-color 70%) 0 100%,
+	            radial-gradient(farthest-side at 50% 0, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)),
+	            radial-gradient(farthest-side at 50% 100%, rgba($shadow-color, $shadow-intensity), rgba($shadow-color, 0)) 0 100%;
 
 	background-repeat: no-repeat;
 	background-color: $background-color;
 	background-size: 100% $cover-size, 100% $cover-size, 100% $shadow-size, 100% $shadow-size;
 	background-attachment: local, local, scroll, scroll;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Pseudo
+// -- When using ::before and ::after you'll always need these three, so we're
+//    saving two lines of code every time you use this.
+////////////////////////////////////////////////////////////////////////////////
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Responsive Ratio
+// -- We use this for creating scalable elements (usually images / background
+//    images) that maintain a ratio
+//    Example ratios: [16:9] [4:3] [3:2] [21:9]
+////////////////////////////////////////////////////////////////////////////////
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+	$padding: unquote( ( $y / $x ) * 100 + '%' );
+	padding-top: $padding;
 }
