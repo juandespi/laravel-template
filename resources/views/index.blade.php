@@ -35,6 +35,9 @@
       </nav>
       </header>
 
-      <div class="box"></div>
+      <div class="box">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi neque, officiis obcaecati? Explicabo, esse repellat dolorum accusamus optio deleniti eum, error modi omnis asperiores ipsa! Quia omnis repellat, obcaecati. Veniam?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi neque, officiis obcaecati? Explicabo, esse repellat dolorum accusamus optio deleniti eum, error modi omnis asperiores ipsa! Quia omnis repellat, obcaecati. Veniam?
+      </div>
     </body>
 </html>

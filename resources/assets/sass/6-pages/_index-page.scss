@@ -1,26 +1,22 @@
 .container {
-  // @include transform(translate(-50%, -50%));
-  // @include position(absolute, 50% null null 50%);
-  // font-family: Raleway, sans-serif;
-  // @include display(flex);
-  // background: rgba(tomato, 5);
-  margin: 0 auto;
-  @include size(500px);
-  div {
-    @include size(60px);
-    text-align: justify;
-    font-size: 100px
-  }
+	background: rgba(tomato, 5);
+	margin: 0 auto;
+	@include size(600px);
+	div {
+		@include size(60px);
+		text-align: justify;
+		font-size: 100px;
+	}
 }
-
 
 .box {
-  @include size(100px 200px);
+	@include size(200px 300px);
+	border: solid 1px black;
+	margin: 0 auto;
+	overflow: auto;
+	@include scrolling-shadows();
 }
 
-
 span {
-  @include moz-fix() {
-    background: blue;
-  }
+	@include moz-fix() { background: blue; }
 }
