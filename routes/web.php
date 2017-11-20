@@ -12,5 +12,31 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+
+    // or
+
+    // return view('welcome') -> with('name', 'World');
+
+    // or
+
+  // store as a variable
+    // return view('welcome',  [ 'name' => $name ]);
+
+    // or
+
+    // return view('welcome',  compact('name')); // use compact() method
+    // $name = 'John';
+    $employees = DB::table('employee')->get();
+
+    return view('index', compact('employees')); // use compact() method
+//     return $tasks;
+});
+
+Route::get('api/employee', function () {
+    // return JSON for employees table
+    $employees = DB::table('employee')->get();
+    // dd($task);
+
+    return $employees;
+    // return view('index', compact('employees')); // use compact() method
 });
