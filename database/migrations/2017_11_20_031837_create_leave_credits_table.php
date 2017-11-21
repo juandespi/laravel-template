@@ -14,13 +14,13 @@ class CreateLeaveCreditsTable extends Migration
     public function up()
     {
         Schema::create('leave_credits', function (Blueprint $table) {
-            $table->integer('emp_no');
-            $table->foreign('emp_no')->references('emp_no')->on('leave');
-            $table->decimal('sick_balance');
-            $table->decimal('emergency_balance');
-            $table->decimal('vacation_balance');
-            $table->decimal('mat_pat_balance');
-            $table->timestamps();
+          $table->integer('emp_no');
+          $table->foreign('emp_no')->references('emp_no')->on('leaves');
+          $table->decimal('sick_balance');
+          $table->decimal('emergency_balance');
+          $table->decimal('vacation_balance');
+          $table->decimal('mat_pat_balance');
+          $table->timestamps();
         });
     }
 

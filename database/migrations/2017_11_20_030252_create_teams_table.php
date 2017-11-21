@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOvertimeTable extends Migration
+class CreateTeamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateOvertimeTable extends Migration
      */
     public function up()
     {
-        Schema::create('overtime', function (Blueprint $table) {
-            $table->integer('emp_no');
-            $table->foreign('emp_no')->references('emp_no')->on('employee');
+        Schema::create('teams', function (Blueprint $table) {
+            $table->integer('emp_no')->primary();
+            $table->foreign('emp_no')->references('emp_no')->on('employees');
             // $table->date('date_filed');
             $table->string('ot_type');
             $table->dateTime('time_start');
@@ -37,6 +37,6 @@ class CreateOvertimeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('overtime');
+        Schema::dropIfExists('teams');
     }
 }
