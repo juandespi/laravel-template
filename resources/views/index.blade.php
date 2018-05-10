@@ -19,6 +19,8 @@
 <body>
   <div class="box">
     <div class="box--inner"></div>
+    <input type="text" placeholder="hahahaha">
+    <textarea name="name" rows="8" cols="80" placeholder="putang ina mo"></textarea>
   </div>
 </body>
 </html>

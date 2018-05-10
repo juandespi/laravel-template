@@ -5,7 +5,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 //  autofill fix
-//  -- fixes browser bug that puts color on an input field
+//  -- fixes browser behaviour that puts color on an input field
 ////////////////////////////////////////////////////////////////////////////////
 @mixin autofillfix($name) {
 	&:-webkit-autofill {
@@ -195,11 +195,57 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Responsive Ratio
-// -- We use this for creating scalable elements (usually images / background
-//    images) that maintain a ratio
+// -- For creating scalable elements (usually images / background images) that
+//    maintain a ratio
 //    Example ratios: [16:9] [4:3] [3:2] [21:9]
 ////////////////////////////////////////////////////////////////////////////////
 @mixin responsive-ratio($x,$y, $pseudo: false) {
 	$padding: unquote( ( $y / $x ) * 100 + '%' );
 	padding-top: $padding;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// Visually Hidden
+// -- Hide only visually, but have it available for screenreaders
+////////////////////////////////////////////////////////////////////////////////
+@mixin vh($focusable: false) {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+
+	@if $focusable {
+		@include vh-focusable;
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// vh @mixin Reset
+////////////////////////////////////////////////////////////////////////////////
+@mixin vh-reset {
+	clip: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	position: static;
+	width: auto;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// -- Allow the element to be focusable when navigated to via the keyboard
+////////////////////////////////////////////////////////////////////////////////
+@mixin vh-focusable {
+	&:active,
+	&:focus {
+		clip: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		position: static;
+		width: auto;
+	}
 }

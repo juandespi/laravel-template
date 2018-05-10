@@ -21,6 +21,12 @@
 		background: tomato;
 		@include responsive-ratio(16, 9);
 	}
+
+	input, textarea {
+		@include placeholder {
+			color: rgba(red, .5);
+		}
+	}
 }
 
 span {
